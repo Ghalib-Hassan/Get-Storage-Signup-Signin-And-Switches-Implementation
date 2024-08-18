@@ -19,8 +19,6 @@ class _SignupSigninState extends State<SignupSignin> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLogin = database.read('isLogin') ?? false;
-    print('isLogin $isLogin');
     return Scaffold(
       body: Container(
         height: double.infinity,

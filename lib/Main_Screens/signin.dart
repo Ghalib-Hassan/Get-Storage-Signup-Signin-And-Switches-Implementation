@@ -26,7 +26,6 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background decoration and design code
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -45,7 +44,6 @@ class _SignInState extends State<SignIn> {
               ),
             ),
           ),
-          // Form design code
           Padding(
             padding: const EdgeInsets.only(top: 200),
             child: Container(

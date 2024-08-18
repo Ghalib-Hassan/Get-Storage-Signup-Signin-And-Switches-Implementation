@@ -118,7 +118,6 @@ class _SignUpState extends State<SignUp> {
                                     'signupPassword', signupPassword.text);
                                 database.write('signupConfirm', signupConfirm);
                                 database.write('isLogin', true);
-
                                 Navigator.push(
                                   // ignore: use_build_context_synchronously
                                   context,

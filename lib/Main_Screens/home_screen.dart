@@ -33,9 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void loadSettings() {
     setState(() {
-      notify = database.read('notify');
-      theme = database.read('theme');
-      recommendation = database.read('recommendation');
+      notify = database.read('notify') ?? true;
+      theme = database.read('theme') ?? true;
+      recommendation = database.read('recommendation') ?? true;
     });
   }
 
@@ -169,14 +169,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           });
 
                       if (isLogout) {
-                        database.remove('signupName');
-                        database.remove('signupEmail');
-                        database.remove('signupPassword');
-                        database.remove('signupConfirm');
-                        database.remove('isLogin');
-                        database.remove('notify');
-                        database.remove('theme');
-                        database.remove('recommendation');
+                        // database.remove('signupName');
+                        // database.remove('signupEmail');
+                        // database.remove('signupPassword');
+                        // database.remove('signupConfirm');
+                        // database.remove('isLogin');
+                        // database.remove('notify');
+                        // database.remove('theme');
+                        // database.remove('recommendation');
+
+                        database.erase();
 
                         Navigator.pushReplacement(
                             context,
@@ -292,14 +294,17 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SplashScreen()));
-            },
-            child: Text('Go to Splash Screen',
-                style: GoogleFonts.abrilFatface(
-                    color: theme ? Colors.white : Colors.black)),
+          ListTile(
+            leading: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SplashScreen()));
+              },
+              child: Text('Go to Splash Screen',
+                  style: GoogleFonts.abrilFatface(
+                      fontSize: 10.sp,
+                      color: theme ? Colors.white : Colors.black)),
+            ),
           )
         ]),
       ),

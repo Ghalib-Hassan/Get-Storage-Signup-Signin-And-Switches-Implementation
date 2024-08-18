@@ -22,25 +22,26 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print('loading data...');
     loadData();
   }
 
   void loadData() {
-    try {
-      bool isLogin = database.read('isLogin') ?? false;
-      if (isLogin) {
-        Timer(const Duration(seconds: 3), () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()));
-        });
-      } else {
-        Timer(const Duration(seconds: 3), () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const SignupSignin()));
-        });
-      }
-    } catch (e) {
-      print('Error reading from GetStorage: $e');
+    bool isLogin = database.read('isLogin') ?? false;
+    print('is login - $isLogin');
+
+    if (isLogin) {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
+      });
+      print('if: $isLogin');
+    } else {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const SignupSignin()));
+      });
+      print('else: $isLogin');
     }
   }
 
